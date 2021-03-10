@@ -1,22 +1,39 @@
 class Obstacle{
     constructor(){
-        this.y1=random(height/2); 
-        this.y2=random(height/2);
+        this.y1=random(270); 
+        this.y2=random(270);
         this.w=100;
         this.x=width-this.w;
         this.c=false;
+        //this.s=false;
     }
-    show(){
+    show(helicopter){
         if(this.c==true){
-            fill(255,0,0)
+            //fill(255,0,0)
+            console.log('helicopter test: '+helicopter.y);
+            if(helicopter.y4<290){
+                fill(255,0,0);
+                rect(this.x,0,this.w,this.y1);
+                fill(0,51,17);
+                rect(this.x,height-this.y2,this.w,this.y2);
+            }
+            else{
+                fill(255,0,0);
+                rect(this.x,height-this.y2,this.w,this.y2);
+                fill(0,51,17);
+                rect(this.x,0,this.w,this.y1);
+            }
         }
         else{
-            fill(0);
+            //fill(0);
+            fill(0,51,17);
+            rect(this.x,0,this.w,this.y1);
+            rect(this.x,height-this.y2,this.w,this.y2);
         }
 
-        fill(0,51,17);
-        rect(this.x,0,this.w,this.y1);
-        rect(this.x,height-this.y2,this.w,this.y2);
+        
+        //rect(this.x,0,this.w,this.y1);
+        //rect(this.x,height-this.y2,this.w,this.y2);
     }
     update(){
         this.x-=5;   
@@ -27,6 +44,12 @@ class Obstacle{
                 this.c=true;
                 return true;
             }
+        }
+    }
+    scoreCount(){
+        if(this.x + 100 == 0){
+            //this.s = true;
+            return true;
         }
     }
 }
